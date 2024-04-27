@@ -166,7 +166,7 @@ a {
         width: fit-content;
     }
 
-    & .post-likes, & .post-description span {
+    & .post-likes, & .post-owner {
         font-weight: 700;
     }
 

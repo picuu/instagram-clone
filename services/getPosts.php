@@ -21,7 +21,8 @@ $posts = getPosts($app_id);
 if ($posts && is_array($posts)) {
     foreach ($posts['data'] as $post) {
         $owner_picture = $post['owner']['picture'];
-        $owner_name = $post['owner']['firstName'];
+        $owner_name = strtolower($post['owner']['firstName']);
+        $owner_id = $post['owner']['id'];
         $image = $post['image'];
         $tags = $post['tags'];
         $likes = $post['likes'];

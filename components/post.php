@@ -1,6 +1,6 @@
 <article class="post">
     <header>
-        <a href="#" class="post-user">
+        <a href=<?= "./user.php?id=$owner_id" ?> class="post-user">
             <img src=<?= $owner_picture ?> alt=<?= $owner_name ?> />
             <h2><?= $owner_name ?></h2>
         </a>
@@ -36,7 +36,10 @@
         </div>
         <div class="post-info">
             <a href="#" class="post-likes"><?= $likes ?> Me gusta</a>
-            <a href="#" class="post-description"><span><?= $owner_name ?></span> <?= $text ?></a>
+            <div class="post-description">
+                <a href=<?= "./user.php?id=$owner_id" ?> class="post-owner"><?= $owner_name ?></a>
+                <a href="#"><?= $text ?></a>
+            </div>
             <a href="#" class="post-comments">Ver los comentarios</a>
             <div class="post-time">Hace <?= $publishDate ?></div>
         </div>
