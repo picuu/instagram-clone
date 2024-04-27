@@ -57,7 +57,7 @@ a {
     background-color: var(--clr-bg);
     border-bottom: 1px solid var(--clr-border);
 
-    & img {
+    & a, & img {
         height: 100%;
     }
 
