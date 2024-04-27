@@ -1,21 +1,25 @@
 <?php
 
-$app_id = "662ce09b690e96c95e7103b4";
-$url = "https://dummyapi.io/data/v1/post";
+function getPosts($app_id) {
+  $url = "https://dummyapi.io/data/v1/post";
+  $opts = array('http' =>
+    array(
+      'method'  => 'GET',
+      'header'  => "app-id: $app_id\r\n"
+    )
+  );
 
-$opts = array('http' =>
-  array(
-    'method'  => 'GET',
-    'header'  => "app-id: $app_id\r\n"
-  )
-);
+  $context  = stream_context_create($opts);
+  $res = file_get_contents($url, false, $context);
+  $data = json_decode($res, true);
 
-$context  = stream_context_create($opts);
-$res = file_get_contents($url, false, $context);
-$data = json_decode($res, true);
+  return $data;
+}
 
-if ($data && is_array($data)) {
-    foreach ($data['data'] as $post) {
+$posts = getPosts($app_id);
+
+if ($posts && is_array($posts)) {
+    foreach ($posts['data'] as $post) {
         $owner_picture = $post['owner']['picture'];
         $owner_name = $post['owner']['firstName'];
         $image = $post['image'];
@@ -27,4 +31,5 @@ if ($data && is_array($data)) {
         include "./components/post.php";
     }
 }
+
 ?>
