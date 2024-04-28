@@ -1,5 +1,5 @@
 :root {
-    --clr-bg: #eee;
+    --clr-bg: #fff;
     --clr-text: #111;
     --clr-border: rgb(0 0 0 / .2);
 }
@@ -67,12 +67,13 @@ a {
     background-color: var(--clr-bg);
     border-bottom: 1px solid var(--clr-border);
 
-    & a, & img {
+    & .header-logo, & img {
         height: 100%;
     }
 
     & .header-icons {
         display: flex;
+        justify-content: flex-end;
         align-items: center;
         gap: .6rem;
     }

@@ -1,0 +1,182 @@
+.user-header {
+    padding-left: 0;
+    border-bottom: none;
+
+    & > a:first-of-type {
+        width: calc(25% + 1rem);
+    }
+
+    & > .header-icons {
+        width: 25%;
+    }
+
+    & h1 {
+        font-size: 1rem;
+        font-weight: 600;
+    }
+}
+
+.user-main-container {
+    display: flex;
+    flex-direction: column;
+    gap: .6rem;
+}
+
+.user-info {
+    padding: 0 1rem;
+}
+
+.user-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: .5rem;
+
+    & img {
+        border-radius: 50%;
+    }
+}
+
+.user-info-followers {
+    display: flex;
+    align-items: flex-end;
+    gap: .75rem;
+    line-height: 1;
+
+    & div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: .25rem;
+    }
+
+    & .user-info-followers-num {
+        font-weight: 600;
+    }
+
+    & .user-info-followers-text {
+        font-size: .9rem;
+    }
+
+    & .user-info-followers-text.posts-text {
+        font-size: .7rem;
+    }
+}
+
+.user-info-bio {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+
+    & h2, & p {
+        font-size: .85rem;
+    }
+
+    & h2 {
+        font-weight: 600;
+    }
+
+    & p {
+        line-height: 1.25;
+    }
+
+    & .tagged-user {
+        color: rgb(10, 40, 135);
+    }
+}
+
+.user-account-buttons {
+    display: flex;
+    align-items: stretch;
+    gap: .25rem;
+    padding: 0 1rem;
+}
+
+.account-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: .5rem 1rem;
+    background-color: rgb(239, 239, 239);
+    border: none;
+    border-radius: .5rem;
+    font-family: system-ui, sans-serif;
+    font-size: .85rem;
+    font-weight: 600;
+    text-align: center;
+    line-height: 1;
+
+    &.button-primary {
+        flex-grow: 1;
+        background-color: rgb(0, 149, 246);
+        color: #fff;
+    }
+
+    &.button-primary:hover {
+        background-color: rgb(24, 119, 242);
+    }
+
+    &.button-secondary {
+        flex-grow: 1;
+    }
+
+    &.button-secondary:hover, &.button-mini:hover {
+        background-color: rgb(219, 219, 219);
+    }
+
+    &.button-mini {
+        width: fit-content;
+        padding: .5rem;
+    }
+
+    &.button-mini span {
+        padding: 0;
+    }
+    
+    &.button-mini svg {
+        width: 16px;
+        height: 16px;
+        aspect-ratio: 1 / 1;
+        
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.user-posts-header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    padding-bottom: 1px;
+    border-bottom: 1px solid var(--clr-border);
+
+    & div {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        padding-block: .25rem;
+    }
+
+    & div:first-child {
+        border-bottom: 1px solid var(--clr-text);
+    }
+
+    & div:hover {
+        cursor: pointer;
+    }
+}
+
+.user-posts-content {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+
+    & .user-post img {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 1 / 1;
+        object-fit: cover;
+    }
+}
