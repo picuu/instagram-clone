@@ -1,7 +1,8 @@
 <?php
 
 function getPosts($app_id) {
-  $url = "https://dummyapi.io/data/v1/post";
+  $page_number = rand(0, 30);
+  $url = "https://dummyapi.io/data/v1/post?page=$page_number&limit=20";
   $opts = array('http' =>
     array(
       'method'  => 'GET',

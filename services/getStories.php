@@ -1,7 +1,8 @@
 <?php
 
 function getStories($app_id) {
-  $url = "https://dummyapi.io/data/v1/user";
+  $page_number = rand(0, 3);
+  $url = "https://dummyapi.io/data/v1/user?page=$page_number&limit=20";
   $opts = array('http' =>
     array(
       'method'  => 'GET',
