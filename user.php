@@ -113,18 +113,34 @@
                     </svg>
                 </div>
             </header>
-            <main class="user-posts-content">
-                <?php
-                    if ($user_posts && is_array($user_posts)) {
-                        foreach ($user_posts as $user_post) {
-                            $user_post_id = $user_post['id'];
-                            $user_post_image = $user_post['image'];
-                            $user_post_tags = $user_post['tags'];
-        
-                            include "./components/user-post.php";
+
+            <?php
+                    if (isset($user_posts)) {
+                        if ($user_posts && is_array($user_posts)) {
+
+                            echo "<main class='user-posts-content'>";
+
+                            foreach ($user_posts as $user_post) {
+                                $user_post_id = $user_post['id'];
+                                $user_post_image = $user_post['image'];
+                                $user_post_tags = $user_post['tags'];
+            
+                                include "./components/user-post.php";
+                            }
                         }
+                    } else {
+
                     }
+
+                    // echo "</main>";
                 ?>
+
+            <main class='user-posts-content no-content'>
+ 
+                <article class="no-posts-alert">
+                    <div class="no-posts-icon"></div>
+                    <h3>Aún no hay publicaciones</h3>
+                </article>
             </main>
         </section>
     </div>
