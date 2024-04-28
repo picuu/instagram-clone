@@ -7,11 +7,43 @@
 <main class="scrolleable" data-simplebar>
     <div class="stories-container" data-simplebar>
         <section class="stories">
-            <?php include "./services/getStories.php"; ?>
+            <?php
+                include "./services/getStories.php";
+
+                $users = getStories($app_id);
+
+                if ($users && is_array($users)) {
+                    foreach ($users['data'] as $user) {
+                        $owner_picture = $user['picture'];
+                        $owner_name = $user['firstName'];
+
+                        include "./components/story.php";
+                    }
+                }
+            ?>
         </section>
     </div>
     <section class="posts">
-        <?php include "./services/getPosts.php"; ?>
+        <?php
+            include "./services/getPosts.php";
+
+            $posts = getPosts($app_id);
+
+            if ($posts && is_array($posts)) {
+                foreach ($posts['data'] as $post) {
+                    $owner_picture = $post['owner']['picture'];
+                    $owner_name = strtolower($post['owner']['firstName']);
+                    $owner_id = $post['owner']['id'];
+                    $image = $post['image'];
+                    $tags = $post['tags'];
+                    $likes = $post['likes'];
+                    $text = $post['text'];
+                    $publishDate = $post['publishDate'];
+
+                    include "./components/post.php";
+                }
+            }
+        ?>
     </section>
 </main>
 

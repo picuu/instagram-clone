@@ -16,15 +16,4 @@ function getStories($app_id) {
   return $data;
 }
 
-$users = getStories($app_id);
-
-if ($users && is_array($users)) {
-    foreach ($users['data'] as $user) {
-        $owner_picture = $user['picture'];
-        $owner_name = $user['firstName'];
-
-        include "./components/story.php";
-    }
-}
-
 ?>
