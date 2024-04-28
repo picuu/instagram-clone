@@ -1,6 +1,30 @@
 <?php
     $app_id = "662ce09b690e96c95e7103b4";
     include "./components/head.html";
+    include "./services/getUser.php";
+    include "./services/getUserPosts.php";
+
+    if (isset($_REQUEST['id']) && $_REQUEST['id'] != "") {
+        $user_id = $_REQUEST['id'];
+
+        $user = getUser($app_id, $user_id);
+        $user_name = strtolower($user['firstName']);
+        $user_full_name = $user['firstName'] . " " . $user['lastName'];
+        $user_picture = $user['picture'];
+
+        $user_posts = getUserPosts($app_id, $user_id)['data'];
+        $user_posts_amount = sizeof($user_posts);
+    } else {
+        $user_name = "user.name";
+        $user_full_name = "User Name";
+        $user_picture = "./img/default-profile.webp";
+
+        $user_posts_amount = 0;
+    }
+
+    $user_followers = rand(0, 9999);
+    $user_follows = rand(0, 999);
+
 ?>
 
 <header class="main-header user-header">
@@ -10,7 +34,7 @@
         </svg>
     </a>
 
-    <h1>user.name</h1>
+    <h1><?= $user_name ?></h1>
 
     <div class="header-icons">
         <a href="#" class="icon small-icon">
@@ -30,27 +54,27 @@
     <div class="user-main-container">
         <section class="user-info">
             <header class="user-info-header">
-                <img src="https://placehold.co/80" alt="user profile image">
+                <img src=<?= $user_picture ?> alt=<?= $user_name . "profile image" ?> />
                 <div class="user-info-followers">
                     <div>
-                        <span class="user-info-followers-num">0</span>
+                        <span class="user-info-followers-num"><?= $user_posts_amount ?></span>
                         <span class="user-info-followers-text posts-text">publicaciones</span>
                     </div>
 
                     <div>
-                        <span class="user-info-followers-num">32</span>
+                        <span class="user-info-followers-num"><?= $user_followers ?></span>
                         <span class="user-info-followers-text">seguidores</span>
                     </div>
 
                     <div>
-                        <span class="user-info-followers-num">27</span>
+                        <span class="user-info-followers-num"><?= $user_follows ?></span>
                         <span class="user-info-followers-text">seguidos</span>
                     </div>
                 </div>
             </header>
             <div class="user-info-bio">
-                <h2>User Name</h2>
-                <p>barcelona | menorca<br><span class="tagged-user">@tag_user24</span></p>
+                <h2><?= $user_full_name ?></h2>
+                <p>lorem ipsum dolor sit amet consectetur adipisicing elit quisquam quia accusantium.<br><span class="tagged-user">@tag_user24</span></p>
             </div>
         </section>
 
@@ -90,24 +114,17 @@
                 </div>
             </header>
             <main class="user-posts-content">
-                <article class="user-post">
-                    <img src="https://placehold.co/100" alt="">
-                </article>
-                <article class="user-post">
-                    <img src="https://placehold.co/100" alt="">
-                </article>
-                <article class="user-post">
-                    <img src="https://placehold.co/100" alt="">
-                </article>
-                <article class="user-post">
-                    <img src="https://placehold.co/100" alt="">
-                </article>
-                <article class="user-post">
-                    <img src="https://placehold.co/100" alt="">
-                </article>
-                <article class="user-post">
-                    <img src="https://placehold.co/100" alt="">
-                </article>
+                <?php
+                    if ($user_posts && is_array($user_posts)) {
+                        foreach ($user_posts as $user_post) {
+                            $user_post_id = $user_post['id'];
+                            $user_post_image = $user_post['image'];
+                            $user_post_tags = $user_post['tags'];
+        
+                            include "./components/user-post.php";
+                        }
+                    }
+                ?>
             </main>
         </section>
     </div>

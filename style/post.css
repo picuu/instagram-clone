@@ -1,0 +1,28 @@
+.post-header {
+    padding: .65rem 0;
+    height: auto;
+
+    & a:first-of-type {
+        width: 25%;
+    }
+}
+
+.post-header-username {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.1;
+
+    & h1 {
+        font-size: .8rem;
+        text-transform: uppercase;
+        color: var(--clr-text);
+        opacity: .5;
+    }
+
+    & h2 {
+        font-size: .95rem;
+        font-weight: 600;
+    }
+}
